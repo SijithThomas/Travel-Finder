@@ -131,7 +131,12 @@ input{
     display: grid;
     gap:1.5rem;
 }
-/* Heade */
+/* Header */
+.header{
+    width:100%;
+    position: fixed;
+    background-color:var(--first-color)
+}
 
 /* Nav */
 
