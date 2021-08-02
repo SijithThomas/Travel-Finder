@@ -24,3 +24,12 @@ const navClose=document.getElementById('nav-close');
  navLink.forEach(n => n.addEventListener('click', linkAction)
      
  );
+
+//  header background  active while scroll
+function scrollHeader(){
+    const header=document.getElementById('header');
+    if(this.scrollY >= 100)
+    header.classList.add('header-scroll');
+    else header.classList.remove('header-scroll');
+}
+window.addEventListener('scroll',scrollHeader);
