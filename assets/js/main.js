@@ -33,3 +33,42 @@ function scrollHeader(){
     else header.classList.remove('header-scroll');
 }
 window.addEventListener('scroll',scrollHeader);
+
+// swipper js
+var swiper = new Swiper(".discover__container", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop:true,
+    spaceBetween: 32,
+    coverflowEffect: {
+      rotate: 0,
+    },
+  });
+
+//   Video js
+const videoFile=document.getElementById('video-file'),
+      videoBtn=document.getElementById('video-button'),
+      videoIcon=document.getElementById('video-icon');
+
+function playPause(){
+    if(videoFile.paused){
+        videoFile.play();
+
+        videoIcon.classList.add('ri-pause-line');
+        videoIcon.classList.remove('ri-play-line');
+    }
+    else{
+        videoFile.pause();
+
+        videoIcon.classList.remove('ri-pause-line');
+        videoIcon.classList.add('ri-play-line');
+    }
+}
+videoBtn.addEventListener('click',playPause);
+function endVideo(){
+    videoIcon.classList.remove('ri-pause-line');
+    videoIcon.classList.add('ri-play-line');
+}
+videoFile.addEventListener('ended',endVideo);
