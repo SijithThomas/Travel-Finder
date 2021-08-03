@@ -24,13 +24,32 @@ const navClose=document.getElementById('nav-close');
  navLink.forEach(n => n.addEventListener('click', linkAction)
      
  );
+//  menu link active while scroll
+ const sections = document.querySelectorAll('section[id]')
+
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)
 
 //  header background  active while scroll
 function scrollHeader(){
     const header=document.getElementById('header');
     if(this.scrollY >= 100)
-    header.classList.add('header-scroll');
-    else header.classList.remove('header-scroll');
+    header.classList.add('scroll-header');
+    else header.classList.remove('scroll-header');
 }
 window.addEventListener('scroll',scrollHeader);
 
@@ -72,3 +91,13 @@ function endVideo(){
     videoIcon.classList.add('ri-play-line');
 }
 videoFile.addEventListener('ended',endVideo);
+
+// scroll up
+function scrollUp(){
+    const scrollUp=document.getElementById('scroll-up');
+    if(this.scrollY>=560)
+    scrollUp.classList.add('show__scrollup');
+    else
+    scrollUp.classList.remove('show__scrollup')
+}
+window.addEventListener('scroll',scrollUp);
